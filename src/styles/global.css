@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   min-width: 100vw;
@@ -15,4 +20,10 @@ h1,
 h2,
 h3 {
   font-family: "Intro Demo", sans-serif;
+}
+
+body > main,
+body > section {
+  min-height: 100vh;
+  scroll-snap-align: start;
 }
