@@ -9,6 +9,7 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  background-color: #070032;
 }
 
 body {
@@ -17,8 +18,7 @@ body {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: "Intro Demo", sans-serif;
 }
 
@@ -26,4 +26,8 @@ body > main,
 body > section {
   min-height: 100vh;
   scroll-snap-align: start;
+}
+
+ul {
+  list-style: none;
 }
