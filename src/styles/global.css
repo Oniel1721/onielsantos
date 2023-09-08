@@ -24,7 +24,7 @@ h2 {
 
 body > main,
 body > section {
-  min-height: 100dvh;
+  min-height: 100vh;
   scroll-snap-align: start;
 }
 
