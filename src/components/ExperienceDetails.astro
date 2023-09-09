@@ -1,0 +1,25 @@
+---
+const { position, project, achievements, responsabilities, skills } =
+  Astro.props;
+---
+
+<aside>
+  <header>
+    <h3>{position}</h3>
+    <span>@ {project}</span>
+  </header>
+  <div>
+    <h4>Achievements:</h4>
+    <p>{achievements}</p>
+    <h4>Responsabilities:</h4>
+    <p>{responsabilities}</p>
+    <h4>Skills Uilized:</h4>
+    <p>{skills}</p>
+  </div>
+</aside>
+
+<style>
+  aside {
+    display: none;
+  }
+</style>
