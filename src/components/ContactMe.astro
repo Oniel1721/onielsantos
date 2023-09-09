@@ -1,0 +1,195 @@
+---
+import MailIcon from "../icons/MailIcon.astro";
+import CVIcon from "../icons/CVIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+
+const mail = "contact@onielsantos.com";
+---
+
+<section>
+  <header>
+    <h2>Contact <span>Me</span></h2>
+  </header>
+  <nav>
+    <div>
+      <i><MailIcon /></i>
+      <a href={`mailto:${mail}`} target="_blank" rel="noopener noreferrer">
+        {mail}
+      </a>
+    </div>
+    <div>
+      <i><CVIcon /></i>
+      <a class="cv" href="/cv.pdf" target="_blank" rel="noopener noreferrer"
+        >Watch CV</a
+      >
+      <a class="cv download" href="/cv.pdf" download="Oniel Santos CV"
+        >Download CV</a
+      >
+    </div>
+    <div>
+      <i><LinkedInIcon /></i>
+      <a
+        href="https://www.linkedin.com/in/onielsantos/"
+        target="_blank"
+        rel="noopener noreferrer">linkedin@onielsantos</a
+      >
+    </div>
+    <div>
+      <i><GithubIcon /></i>
+      <a
+        href="https://github.com/Oniel1721"
+        target="_blank"
+        rel="noopener noreferrer">github@Oniel1721</a
+      >
+    </div>
+  </nav>
+  <form>
+    <input required type="text" name="name" placeholder="Your name" />
+    <input required type="email" name="email" placeholder="Your email" />
+    <textarea rows="6" required name="message" placeholder="Your message"
+    ></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<style>
+  section {
+    color: white;
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom: 32px;
+    background: linear-gradient(0deg, #2c2174 -12.38%, #070032 46.13%);
+  }
+
+  nav,
+  footer {
+    padding-left: 24px;
+  }
+
+  header {
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-weight: 900;
+    width: 100%;
+    position: relative;
+  }
+
+  h2 span {
+    color: #f27121;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 90vw;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  div {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  a.cv {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 8px;
+    text-decoration: none;
+  }
+
+  a.download {
+    color: #f27121;
+  }
+
+  form {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    padding-right: 64px;
+  }
+
+  input,
+  textarea {
+    padding: 12px;
+    background-color: inherit;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    outline: none;
+    resize: none;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 100%;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #fff80;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+  }
+
+  textarea {
+    border: 2px solid white;
+  }
+
+  button {
+    background-color: #f27121;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    width: 152px;
+    height: 32px;
+    border: none;
+  }
+
+  @media screen and (max-width: 380px) {
+    header {
+      font-size: 24px;
+    }
+
+    header::after {
+      width: 95vw;
+    }
+
+    nav,
+    form {
+      padding-left: 16px;
+    }
+
+    form {
+      padding-right: 16px;
+      margin-top: 32px;
+    }
+  }
+</style>
