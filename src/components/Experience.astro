@@ -21,10 +21,10 @@ const experiences = [experience, experience, experience, experience];
       <span>Background</span>
     </h2>
   </header>
-  <ul>
+  <ul id="experiences-list">
     {
       experiences.map((exp) => (
-        <li>
+        <li class="experience">
           <ExperienceCard {...exp} />
           <ExperienceDetails {...exp} />
         </li>
@@ -32,6 +32,29 @@ const experiences = [experience, experience, experience, experience];
     }
   </ul>
 </section>
+
+<script>
+  const $experiencesList = document.querySelector("#experiences-list");
+  $experiencesList?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const $experience = target.closest("article");
+    if ($experience) {
+      const $active = $experiencesList.querySelector(".show");
+      if ($active) $active.classList.remove("show");
+      const $details = $experience.parentElement?.querySelector("aside");
+      if (!$details) return;
+      $details.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    const $closeButton = target.closest("aside.show .button");
+    if ($closeButton) {
+      const $details = $closeButton.closest("aside");
+      if (!$details) return;
+      $details.classList.remove("show");
+      document.body.style.overflow = "unset";
+    }
+  });
+</script>
 
 <style>
   section {
