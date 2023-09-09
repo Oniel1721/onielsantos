@@ -8,7 +8,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   background-color: #070032;
 }
 
@@ -25,7 +24,6 @@ h2 {
 body > main,
 body > section {
   min-height: 100vh;
-  scroll-snap-align: start;
 }
 
 ul {
