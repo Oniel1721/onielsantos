@@ -7,9 +7,9 @@ import GithubIcon from "../icons/GithubIcon.astro";
 const mail = "contact@onielsantos.com";
 ---
 
-<section>
-  <header>
-    <h2>Contact <span>Me</span></h2>
+<section class="section">
+  <header class="header">
+    <h2>Contact <span class="orange">Me</span></h2>
   </header>
   <nav>
     <div>
@@ -55,10 +55,6 @@ const mail = "contact@onielsantos.com";
 
 <style>
   section {
-    color: white;
-    text-align: center;
-    padding-top: 64px;
-    padding-bottom: 32px;
     background: linear-gradient(0deg, #2c2174 -12.38%, #070032 46.13%);
   }
 
@@ -163,8 +159,8 @@ const mail = "contact@onielsantos.com";
   }
 
   button {
-    background-color: #f27121;
-    color: white;
+    background-color: white;
+    color: #070032;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -176,10 +172,6 @@ const mail = "contact@onielsantos.com";
   @media screen and (max-width: 380px) {
     header {
       font-size: 24px;
-    }
-
-    header::after {
-      width: 95vw;
     }
 
     nav,
