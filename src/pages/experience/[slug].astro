@@ -1,0 +1,67 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import type { GetStaticPaths } from "astro";
+import { experiences } from "../../data/experiences";
+import ExperienceDetails from "../../components/ExperienceDetails.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export const getStaticPaths = (() => {
+  return experiences.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const experience = experiences.find((e) => e.slug === slug);
+if (!experience) {
+  throw new Error(`No experience found for slug ${slug}`);
+}
+---
+
+<Layout>
+  <ExperienceDetails {...experience} />
+  <style is:global>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: #070032;
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+</Layout>
+
+<style is:global>
+  ::view-transition-old(root) {
+    animation: 0.3s ease-in-out 0s 1 forwards slideOutToLeft;
+  }
+
+  ::view-transition-new(root) {
+    animation: 0.3s ease-in-out 0s 1 forwards slideInFromRight;
+  }
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOutToLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

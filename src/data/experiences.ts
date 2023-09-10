@@ -1,4 +1,5 @@
 type Experience = {
+  slug: string;
   position: string;
   project: string;
   achievements: string;
@@ -8,6 +9,7 @@ type Experience = {
 
 export const experiences: Experience[] = [
   {
+    slug: "software-developer-at-intellisys",
     position: "Software Developer",
     project: "Intellisys",
     achievements:
@@ -17,6 +19,7 @@ export const experiences: Experience[] = [
       "React, Node.js, TypeScript, JavaScript, Next.js, Nest.js, Express.js, PostgreSQL, Docker, Scrum, Google Cloud Platform, Git, GitHub, GitHub Actions, Material UI, GraphQL, Jest, Testing Library, and more.",
   },
   {
+    slug: "senior-software-engineer-at-medlify",
     position: "Senior Software Engineer",
     project: "Medlify",
     achievements:
@@ -26,6 +29,7 @@ export const experiences: Experience[] = [
       "Next.js, Nest.js, Node.js, TypeScript, JavaScript, Micro-Frontends, Micro-Services, Kafka, Docker, Scrum, Amazon Web Services, Terraform, Git, GitHub, Styled Components, Jest, Testing Library, Jira, Confluence, and more.",
   },
   {
+    slug: "senior-software-engineer-at-truepill",
     position: "Senior Software Engineer",
     project: "Truepill",
     achievements:
@@ -35,6 +39,7 @@ export const experiences: Experience[] = [
       "React, Gatsby, Node.js, TypeScript, JavaScript, Micro-Services, Nest.js, Express.js, MySQL, Docker, Scrum, Amazon S3, Azure DevOps, Azure Cosmos DB, Git, GitHub, Sass, Jest, Testing Library, and more.",
   },
   {
+    slug: "coach-and-evaluator-at-cincinnatus",
     position: "Coach & Evaluator",
     project: "Cincinnatus",
     achievements:

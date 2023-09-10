@@ -4,17 +4,17 @@ import ExperienceDetails from "./ExperienceDetails.astro";
 import { experiences } from "../data/experiences";
 ---
 
-<section class="section">
+<section id="experiences" class="section">
   <header class="header">
     <h2>
       <span class="orange">Professional</span>
       <span>Background</span>
     </h2>
   </header>
-  <ul id="experiences-list">
+  <ul>
     {
       experiences.map((exp) => (
-        <li class="experience">
+        <li>
           <ExperienceCard {...exp} />
           <ExperienceDetails {...exp} />
         </li>
@@ -22,29 +22,6 @@ import { experiences } from "../data/experiences";
     }
   </ul>
 </section>
-
-<script>
-  const $experiencesList = document.querySelector("#experiences-list");
-  $experiencesList?.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    const $experience = target.closest("article");
-    if ($experience) {
-      const $active = $experiencesList.querySelector(".show");
-      if ($active) $active.classList.remove("show");
-      const $details = $experience.parentElement?.querySelector("aside");
-      if (!$details) return;
-      $details.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
-    const $closeButton = target.closest("aside.show .button");
-    if ($closeButton) {
-      const $details = $closeButton.closest("aside");
-      if (!$details) return;
-      $details.classList.remove("show");
-      document.body.style.overflow = "unset";
-    }
-  });
-</script>
 
 <style>
   section {

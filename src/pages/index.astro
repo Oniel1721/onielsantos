@@ -1,4 +1,5 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import HamburgerButton from "../components/HamburgerButton.astro";
 import Hero from "../components/Hero.astro";
 import AboutMe from "../components/AboutMe.astro";
@@ -9,122 +10,122 @@ import Testimonial from "../components/Testimonial.astro";
 import ContactMe from "../components/ContactMe.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Oniel Santos - Full-Stack developer 3+ of experience with JavaScript & NodeJs. Experienced developing software in the Healthcare industry."
-    />
-    <meta
-      name="keywords"
-      content="Full-stack developer,JavaScript,Node.js,Healthcare,Software development,Teaching,Leadership,Teamwork,Self-taught,Web app,API,Data,Intellisys,Medlify,Truepill,Cincinnatus,React,Nest.js,TypeScript,Next.js,Express.js,PostgreSQL,Docker,Scrum,Google Cloud Platform,Git,GitHub,GitHub Actions,Material UI,GraphQL,Jest,Testing Library,HIPAA,GDPR,Micro Frontends,Micro Services,Kafka,Amazon Web Services,Terraform,Git,GitHub,Styled Components,Jest,Testing Library,Jira,Confluence,HTML,CSS,Python,AWS,Trello"
-    />
-    <meta name="author" content="OnielSantos" />
-    <meta name="og:title" content="Oniel Santos" />
-    <meta
-      name="og:description"
-      content="Full-Stack developer 3+ of experience with JavaScript & NodeJs."
-    />
-    <meta name="og:image" content="/images/og.png" />
+<Layout>
+  <HamburgerButton />
+  <Hero />
+  <AboutMe />
+  <Experience />
+  <!-- <Projects /> -->
+  <Skills />
+  <Testimonial />
+  <ContactMe />
+  <style is:inline>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <link rel="stylesheet" href="fonts.css" />
-    <title>Oniel Santos - Full Stack Developer</title>
-  </head>
-  <body>
-    <HamburgerButton />
-    <Hero />
-    <AboutMe />
-    <Experience />
-    <!-- <Projects /> -->
-    <Skills />
-    <Testimonial />
-    <ContactMe />
-  </body>
-</html>
+    html {
+      background-color: #070032;
+    }
 
-<style is:inline>
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    h1,
+    h2 {
+      font-family: "Intro Demo", sans-serif;
+    }
+
+    body > main,
+    body > section {
+      min-height: 100vh;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .orange {
+      color: #f27121;
+    }
+
+    .section {
+      color: white;
+      text-align: center;
+      padding-top: 64px;
+      padding-bottom: 32px;
+    }
+
+    .header {
+      margin-bottom: 32px;
+      font-size: 28px;
+      font-weight: 900;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header h2 {
+      width: max-content;
+      position: relative;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 8px;
+    }
+
+    .header h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100vw;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .center {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .title_right h2::after {
+      left: 0;
+      right: auto;
+      background-color: #f27121;
+    }
+  </style>
+</Layout>
+
+<style is:global>
+  ::view-transition-old(root) {
+    animation: 0.3s ease-in-out 0s 1 forwards slideOutToRight;
   }
 
-  html {
-    scroll-behavior: smooth;
-    background-color: #070032;
+  ::view-transition-new(root) {
+    animation: 0.3s ease-in-out 0s 1 forwards slideInFromLeft;
   }
 
-  body {
-    font-family: "Poppins", sans-serif;
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 
-  h1,
-  h2 {
-    font-family: "Intro Demo", sans-serif;
-  }
-
-  body > main,
-  body > section {
-    min-height: 100vh;
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  .orange {
-    color: #f27121;
-  }
-
-  .section {
-    color: white;
-    text-align: center;
-    padding-top: 64px;
-    padding-bottom: 32px;
-  }
-
-  .header {
-    margin-bottom: 32px;
-    font-size: 28px;
-    font-weight: 900;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header h2 {
-    width: max-content;
-    position: relative;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 8px;
-  }
-
-  .header h2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-
-  .center {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-  }
-
-  .title_right h2::after {
-    left: 0;
-    right: auto;
-    background-color: #f27121;
+  @keyframes slideOutToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 </style>
