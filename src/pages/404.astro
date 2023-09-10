@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <h1>404</h1>
+    <p>Page not found</p>
+    <a href="/">Go back home</a>
+  </main>
+</Layout>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background-color: #070032;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    color: white;
+  }
+
+  h1 {
+    font-family: "Intro Demo", sans-serif;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #f27121;
+    border-bottom: 2px solid #f27121;
+    padding-bottom: 0.25rem;
+  }
+</style>
