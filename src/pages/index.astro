@@ -1,4 +1,7 @@
 ---
+import { experiences } from "../data/experiences";
+import { skills } from "../data/skills";
+
 import Layout from "../layouts/Layout.astro";
 import HamburgerButton from "../components/HamburgerButton.astro";
 import Hero from "../components/Hero.astro";
@@ -11,6 +14,29 @@ import ContactMe from "../components/ContactMe.astro";
 ---
 
 <Layout>
+  <head>
+    <meta
+      name="description"
+      content="Oniel Santos - Full-Stack developer 3+ of experience with JavaScript & NodeJs. Experienced developing software in the Healthcare industry."
+    />
+    <meta
+      name="keywords"
+      content={`Oniel Santos,Oniel,${experiences
+        .map((e) => `${e.position},${e.project}`)
+        .join(",")},Full-Stack developer,${skills
+        .map((s) => s.name)
+        .join(
+          ","
+        )}Experienced,Healthcare,Software,Developer,Self-taught,Professional,Skills`}
+    />
+    <meta name="author" content="OnielSantos" />
+    <meta name="og:title" content="Oniel Santos" />
+    <meta
+      name="og:description"
+      content="Full-Stack developer 3+ of experience with JavaScript & NodeJs."
+    />
+    <meta name="og:image" content="/images/og.png" />
+  </head>
   <HamburgerButton />
   <Hero />
   <AboutMe />
@@ -129,3 +155,4 @@ import ContactMe from "../components/ContactMe.astro";
     }
   }
 </style>
+ ../data/skills.ts

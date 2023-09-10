@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import type { GetStaticPaths } from "astro";
 import { experiences } from "../../data/experiences";
 import ExperienceDetails from "../../components/ExperienceDetails.astro";
@@ -21,6 +20,25 @@ if (!experience) {
 ---
 
 <Layout>
+  <head>
+    <meta
+      name="description"
+      content={`Oniel Santos - ${experience.achievements}`}
+    />
+    <meta
+      name="keywords"
+      content={`Oniel Santos,${experience.position},${
+        experience.project
+      },${experience.skills.split(" ").join(",")}`}
+    />
+    <meta name="author" content="OnielSantos" />
+    <meta name="og:title" content="Oniel Santos" />
+    <meta
+      name="og:description"
+      content={`Oniel Santos - ${experience.position} at ${experience.project}`}
+    />
+    <meta name="og:image" content="/images/og.png" />
+  </head>
   <ExperienceDetails {...experience} />
   <style is:global>
     *,

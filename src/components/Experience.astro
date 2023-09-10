@@ -1,6 +1,5 @@
 ---
 import ExperienceCard from "./ExperienceCard.astro";
-import ExperienceDetails from "./ExperienceDetails.astro";
 import { experiences } from "../data/experiences";
 ---
 
@@ -16,7 +15,6 @@ import { experiences } from "../data/experiences";
       experiences.map((exp) => (
         <li>
           <ExperienceCard {...exp} />
-          <ExperienceDetails {...exp} />
         </li>
       ))
     }

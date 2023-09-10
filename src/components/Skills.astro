@@ -1,72 +1,5 @@
 ---
-import AWSIcon from "../icons/AWSIcon.astro";
-import CSSIcon from "../icons/CSSIcon.astro";
-import DockerIcon from "../icons/DockerIcon.astro";
-import GraphQLIcon from "../icons/GraphQLIcon.astro";
-import HTMLIcon from "../icons/HTMLIcon.astro";
-import JavaScriptIcon from "../icons/JavaScriptIcon.astro";
-import NestJsIcon from "../icons/NestJsIcon.astro";
-import NextJsIcon from "../icons/NextJsIcon.astro";
-import NodeJsIcon from "../icons/NodeJsIcon.astro";
-import PostgreSQLIcon from "../icons/PostgreSQLIcon.astro";
-import ReactIcon from "../icons/ReactIcon.astro";
-import ReduxIcon from "../icons/ReduxIcon.astro";
-import TypeScriptIcon from "../icons/TypeScriptIcon.astro";
-
-const skills = [
-  {
-    Icon: JavaScriptIcon,
-    name: "JavaScript",
-  },
-  {
-    Icon: AWSIcon,
-    name: "Amazon Web Services",
-  },
-  {
-    Icon: PostgreSQLIcon,
-    name: "PostgreSQL",
-  },
-  {
-    Icon: NestJsIcon,
-    name: "NestJS",
-  },
-  {
-    Icon: HTMLIcon,
-    name: "HTML",
-  },
-  {
-    Icon: CSSIcon,
-    name: "CSS",
-  },
-  {
-    Icon: DockerIcon,
-    name: "Docker",
-  },
-  {
-    Icon: NodeJsIcon,
-    name: "NodeJS",
-  },
-  {
-    Icon: ReduxIcon,
-    name: "Redux",
-  },
-  {
-    Icon: ReactIcon,
-    name: "React",
-  },
-  {
-    Icon: GraphQLIcon,
-    name: "GraphQL",
-  },
-  {
-    Icon: TypeScriptIcon,
-    name: "TypeScript",
-  },
-  {
-    Icon: NextJsIcon,
-    name: "NextJS",
-  },
-];
+import { skills } from "../data/skills.ts";
 ---
 
 <section class="section">
@@ -79,7 +12,7 @@ const skills = [
         <li>
           <figure>
             <div>
-              <skill.Icon />
+              <img src={skill.icon} alt={`${skill.name} Icon`} />
             </div>
             <figcaption>{skill.name}</figcaption>
           </figure>
@@ -121,6 +54,12 @@ const skills = [
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+  }
+
+  div img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   figcaption {
