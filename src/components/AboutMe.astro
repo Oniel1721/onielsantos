@@ -66,6 +66,18 @@
     margin-left: auto;
     margin-right: 8px;
     margin-bottom: 60px;
+    position: relative;
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    width: 358px;
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    translate: -25% -50%;
+    z-index: -1;
   }
 
   h2 {
@@ -80,6 +92,18 @@
   article {
     display: flex;
     padding: 0 8px 0 45px;
+    position: relative;
+  }
+
+  article::before {
+    content: "";
+    position: absolute;
+    width: 358px;
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    right: 75%;
   }
 
   div:has(> p) {
@@ -125,6 +149,18 @@
     margin-bottom: auto;
     margin-top: auto;
     margin-left: 45px;
+    position: relative;
+  }
+
+  footer::before {
+    content: "";
+    position: absolute;
+    width: 136px;
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    right: 0;
   }
 
   footer ul {
