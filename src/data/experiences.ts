@@ -9,16 +9,6 @@ type Experience = {
 
 export const experiences: Experience[] = [
   {
-    slug: "software-developer-at-intellisys",
-    position: "Software Developer",
-    project: "Intellisys",
-    achievements:
-      "Improved by 500% the COVID-19 vaccination registration process to +10M people by leading a team of developers. Built several apps and APIs to helps citizens to register, find closest vaccination center, schedule an appointment, and more. Developed a web app to help the government to manage all citizens' data and vaccination centers.",
-    responsabilities: `Plan, design, develop, test, deploy, review, and maintain web apps and APIs with the best practices. Lead a team of developers. Manage the project's backlog. Write technical documentation. Collaborate with other teams. Mentor junior and apprentice developers.`,
-    skills:
-      "React, Node.js, TypeScript, JavaScript, Next.js, Nest.js, Express.js, PostgreSQL, Docker, Scrum, Google Cloud Platform, Git, GitHub, GitHub Actions, Material UI, GraphQL, Jest, Testing Library, and more.",
-  },
-  {
     slug: "senior-software-engineer-at-medlify",
     position: "Senior Software Engineer",
     project: "Medlify",
@@ -37,6 +27,16 @@ export const experiences: Experience[] = [
     responsabilities: `Develop, test, deploy, review, and maintain web apps and APIs with the best practices. Write technical documentation. Collaborate with other teams. Make demos to other teams, clients, and stakeholders. Onboard new developers, and make decisions about solutions and technologies.`,
     skills:
       "React, Gatsby, Node.js, TypeScript, JavaScript, Micro-Services, Nest.js, Express.js, MySQL, Docker, Scrum, Amazon S3, Azure DevOps, Azure Cosmos DB, Git, GitHub, Sass, Jest, Testing Library, and more.",
+  },
+  {
+    slug: "software-developer-at-intellisys",
+    position: "Software Developer",
+    project: "Intellisys",
+    achievements:
+      "Improved by 500% the COVID-19 vaccination registration process to +10M people by leading a team of developers. Built several apps and APIs to helps citizens to register, find closest vaccination center, schedule an appointment, and more. Developed a web app to help the government to manage all citizens' data and vaccination centers.",
+    responsabilities: `Plan, design, develop, test, deploy, review, and maintain web apps and APIs with the best practices. Lead a team of developers. Manage the project's backlog. Write technical documentation. Collaborate with other teams. Mentor junior and apprentice developers.`,
+    skills:
+      "React, Node.js, TypeScript, JavaScript, Next.js, Nest.js, Express.js, PostgreSQL, Docker, Scrum, Google Cloud Platform, Git, GitHub, GitHub Actions, Material UI, GraphQL, Jest, Testing Library, and more.",
   },
   {
     slug: "coach-and-evaluator-at-cincinnatus",
