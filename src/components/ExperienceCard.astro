@@ -21,16 +21,28 @@ const { position, project, achievements, slug } = Astro.props;
     height: 100%;
     display: flex;
     flex-direction: column;
+    text-align: left;
+    margin-right: 25px;
   }
 
   article::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.1);
+    top: 100%;
+    right: -30px;
+  }
+
+  a::before {
     position: absolute;
     content: "";
     border-radius: 50%;
     height: 10px;
     width: 10px;
     background-color: #f27121;
-    top: 33px;
+    top: 8px;
     left: 8px;
   }
 
@@ -59,6 +71,7 @@ const { position, project, achievements, slug } = Astro.props;
   }
 
   a {
+    position: relative;
     background-color: white;
     font-size: 12px;
     font-weight: 600;
@@ -82,7 +95,8 @@ const { position, project, achievements, slug } = Astro.props;
 
   @media screen and (max-width: 380px) {
     article::after,
-    article::before {
+    article::before,
+    a::before {
       display: none;
     }
 
