@@ -4,6 +4,7 @@ const { position, project, achievements, responsabilities, skills } =
 ---
 
 <main>
+  <div></div>
   <a href="/#experiences" class="button">
     <img src="/icons/close-icon.svg" alt="Close Icon" />
   </a>
@@ -31,12 +32,23 @@ const { position, project, achievements, responsabilities, skills } =
     overflow: hidden;
   }
 
+  div {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/images/experience-background.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
   .button {
     width: 45px;
     height: 45px;
     margin-left: auto;
     margin-right: 16px;
     margin-top: 16px;
+    z-index: 10;
   }
 
   header {
