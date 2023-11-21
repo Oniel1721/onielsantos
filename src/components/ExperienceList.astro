@@ -60,10 +60,33 @@ import ExperienceItem from "./ExperienceItem.astro";
 <style is:global>
   .experience-list {
     position: relative;
-    border-inline-start-width: 1px;
+    /* border-inline-start-width: 1px;
     border-inline-start-style: solid;
-    border-color: var(--secondary);
+    border-color: var(--secondary); */
     list-style: none;
+  }
+
+  .experience-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 0%;
+    background-color: var(--primary);
+    animation-name: line;
+    animation-timeline: view();
+    animation-fill-mode: both;
+    animation-range: 25% 100%;
+  }
+
+  @keyframes line {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
   }
   .experience-body {
     margin-bottom: 1rem;
