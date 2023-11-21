@@ -1,113 +1,14 @@
 ---
-import { testimonials } from "../data/testimonials";
+const { body, name, position } = Astro.props as {
+  body: string;
+  name: string;
+  position: string;
+};
 ---
 
-<section class="section">
-  <header class="header center title_right">
-    <h2>Testimonial</h2>
-  </header>
-  <div>
-    {
-      testimonials.map(({ comment, name, ocupation }) => (
-        <article>
-          <q>{comment}</q>
-          <footer>
-            <cite>{name}</cite>
-            <span>- {ocupation}</span>
-          </footer>
-        </article>
-      ))
-    }
-  </div>
-</section>
-
-<style>
-  div {
-    display: flex;
-    flex-direction: column;
-    padding-left: 60px;
-    gap: 36px;
-  }
-
-  article {
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.25);
-    padding: 12px 28px 12px 48px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  article::before {
-    background-color: #f27121;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 100%;
-    width: 8px;
-    height: 100%;
-  }
-
-  q {
-    position: relative;
-  }
-
-  q::after {
-    content: "";
-  }
-
-  q::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: -16px;
-    width: 12px;
-    height: 2px;
-    background-color: white;
-  }
-
-  article footer {
-    display: flex;
-    flex-direction: column;
-  }
-
-  cite {
-    font-weight: 600;
-    color: #f27121;
-  }
-
-  span {
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    color: #f27121;
-    font-style: italic;
-  }
-
-  @media screen and (max-width: 380px) {
-    header {
-      font-size: 24px;
-    }
-
-    header::after {
-      width: 95vw;
-    }
-
-    div {
-      padding: 0 12px;
-    }
-
-    article {
-      padding: 12px 28px 12px 28px;
-    }
-
-    article::before {
-      display: none;
-    }
-
-    q::before {
-      top: 8px;
-    }
-  }
-</style>
+<article class="testimonial">
+  <q class="testimonial-body">{body}</q>
+  <footer class="testimonial-footer">
+    <cite class="testimonial-cite">{name} - <span>{position}</span></cite>
+  </footer>
+</article>
