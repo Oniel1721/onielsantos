@@ -1,0 +1,45 @@
+---
+import AwsIcon from "./icons/AwsIcon.astro";
+import CssIcon from "./icons/CssIcon.astro";
+import DockerIcon from "./icons/DockerIcon.astro";
+import ElasticIcon from "./icons/ElasticIcon.astro";
+import GraphIcon from "./icons/GraphIcon.astro";
+import HtmlIcon from "./icons/HtmlIcon.astro";
+import JsIcon from "./icons/JsIcon.astro";
+import MongoIcon from "./icons/MongoIcon.astro";
+import NestIcon from "./icons/NestIcon.astro";
+import NextIcon from "./icons/NextIcon.astro";
+import NodeIcon from "./icons/NodeIcon.astro";
+import PostgresIcon from "./icons/PostgresIcon.astro";
+import ReactIcon from "./icons/ReactIcon.astro";
+import TsIcon from "./icons/TsIcon.astro";
+---
+
+<ul class="tech-list">
+  <HtmlIcon />
+  <CssIcon />
+  <JsIcon />
+  <TsIcon />
+  <NodeIcon />
+  <ReactIcon />
+  <NextIcon />
+  <NestIcon />
+  <PostgresIcon />
+  <MongoIcon />
+  <ElasticIcon />
+  <DockerIcon />
+  <GraphIcon />
+  <AwsIcon />
+</ul>
+
+<style is:global>
+  .tech-list {
+    display: grid;
+    gap: 1rem 0.5rem;
+    list-style: none;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  }
+</style>

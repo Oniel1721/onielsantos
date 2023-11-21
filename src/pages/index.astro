@@ -1,16 +1,12 @@
 ---
-import { experiences } from "../data/experiences";
-import { skills } from "../data/skills";
-
+import TechList from "../components/TechList.astro";
 import Layout from "../layouts/Layout.astro";
-import HamburgerButton from "../components/HamburgerButton.astro";
-import Hero from "../components/Hero.astro";
-import AboutMe from "../components/AboutMe.astro";
-import Experience from "../components/Experience.astro";
-import Skills from "../components/Skills.astro";
-import Projects from "../components/Projects.astro";
-import Testimonial from "../components/Testimonial.astro";
-import ContactMe from "../components/ContactMe.astro";
+import ExperienceList from "../components/ExperienceList.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Profile from "../components/Profile.astro";
+import Footer from "../components/Footer.astro";
+import Section from "../components/Section.astro";
+import Main from "../components/Main.astro";
 ---
 
 <Layout>
@@ -21,13 +17,7 @@ import ContactMe from "../components/ContactMe.astro";
     />
     <meta
       name="keywords"
-      content={`Oniel Santos,Oniel,${experiences
-        .map((e) => `${e.position},${e.project}`)
-        .join(",")},Full-Stack developer,${skills
-        .map((s) => s.name)
-        .join(
-          ","
-        )}Experienced,Healthcare,Software,Developer,Self-taught,Professional,Skills`}
+      content={`Oniel Santos,Oniel,Experienced,Healthcare,Software,Developer,Self-taught,Professional,Skills`}
     />
     <meta name="author" content="OnielSantos" />
     <meta name="og:title" content="Oniel Santos" />
@@ -35,123 +25,22 @@ import ContactMe from "../components/ContactMe.astro";
       name="og:description"
       content="Full-Stack developer 3+ of experience with JavaScript & NodeJs."
     />
-    <meta name="og:image" content="/images/og.png" />
+    <meta name="og:image" content="/images/profile.jpg" />
   </head>
-  <HamburgerButton />
-  <Hero />
-  <AboutMe />
-  <Experience />
-  <!-- <Projects /> -->
-  <Skills />
-  <Testimonial />
-  <ContactMe />
-  <style is:inline>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    html {
-      background-color: #070032;
-    }
-
-    body {
-      font-family: "Poppins", sans-serif;
-    }
-
-    h1,
-    h2 {
-      font-family: "Intro Demo", sans-serif;
-    }
-
-    body > main,
-    body > section {
-      min-height: 100vh;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .orange {
-      color: #f27121;
-    }
-
-    .section {
-      color: white;
-      text-align: center;
-      padding-top: 64px;
-      padding-bottom: 32px;
-    }
-
-    .header {
-      margin-bottom: 32px;
-      font-size: 28px;
-      font-weight: 900;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .header h2 {
-      width: max-content;
-      position: relative;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-bottom: 8px;
-    }
-
-    .header h2::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100vw;
-      height: 4px;
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .center {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-    }
-
-    .title_right h2::after {
-      left: 0;
-      right: auto;
-      background-color: #f27121;
-    }
-  </style>
+  <Main>
+    <Section title="">
+      <Profile />
+    </Section>
+    <Section title="">
+      <TechList />
+    </Section>
+    <Section title="Experience" class="section">
+      <ExperienceList />
+    </Section>
+    <Section title="Testimonials" class="section">
+      <Testimonials />
+    </Section>
+  </Main>
+  <Footer />
 </Layout>
-
-<style is:global>
-  ::view-transition-old(root) {
-    animation: 0.3s ease-in-out 0s 1 forwards slideOutToRight;
-  }
-
-  ::view-transition-new(root) {
-    animation: 0.3s ease-in-out 0s 1 forwards slideInFromLeft;
-  }
-
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideOutToRight {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-  }
-</style>

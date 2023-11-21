@@ -14,5 +14,75 @@ import { ViewTransitions } from "astro:transitions";
   </head>
   <body>
     <slot />
+    <style is:global>
+      :root {
+        --color: #003b4f;
+        --bg: #dde8f9;
+        --primary: #0b7b99;
+        --secondary: #243757;
+        --testimonial-border: 4px solid var(--secondary);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color: white;
+          --bg: #20242c;
+          --primary: #4dd8ff;
+          --secondary: #d4e4fe;
+        }
+      }
+
+      html[data-theme="dark"] {
+        --color: white;
+        --bg: #20242c;
+        --primary: #4dd8ff;
+        --secondary: #d4e4fe;
+      }
+
+      html[data-theme="light"] {
+        --color: #003b4f;
+        --bg: #dde8f9;
+        --primary: #0b7b99;
+        --secondary: #243757;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media screen and (max-width: 380px) {
+        html {
+          font-size: 12px;
+        }
+      }
+
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--color);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    </style>
   </body>
 </html>

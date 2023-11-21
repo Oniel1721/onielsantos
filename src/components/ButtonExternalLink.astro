@@ -1,0 +1,24 @@
+---
+const { href, style } = Astro.props as { href: string; style: string };
+---
+
+<a class="btn" style={style} href={href} target="_blank">
+  <slot />
+</a>
+
+<style is:global>
+  a.btn {
+    background-color: var(--primary);
+    color: var(--bg);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: scale 0.2s ease-in-out;
+  }
+
+  a.btn:hover {
+    scale: 1.05;
+  }
+</style>

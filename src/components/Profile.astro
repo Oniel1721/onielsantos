@@ -1,0 +1,62 @@
+---
+import Nav from "./Nav.astro";
+---
+
+<div class="profile-container">
+  <img class="profile" src="/images/profile.jpg" alt="Oniel Santos" />
+  <div class="profile-caption">
+    <h1 class="profile-name">Oniel Santos</h1>
+    <h2 class="profile-position">Full-Stack Developer</h2>
+    <p class="profile-bio">
+      <span>+4</span> years of experience self-taught. Worked in the
+      <span>Healthcare industry</span> and <span>E-commerce</span>. Love
+      teaching and sharing knowledge.
+    </p>
+
+    <Nav />
+  </div>
+</div>
+
+<style is:global>
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .profile {
+    width: clamp(12.5rem, 40%, 22.5rem);
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+  }
+
+  .profile-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+
+  .profile-name {
+    font-size: 3em;
+    color: var(--primary);
+  }
+
+  .profile-position {
+    font-size: 2em;
+  }
+
+  .profile-bio {
+    color: var(--secondary);
+    max-width: 21rem;
+    text-wrap: balance;
+    font-weight: 300;
+  }
+
+  .profile-bio span {
+    color: var(--primary);
+    font-weight: 600;
+  }
+</style>
