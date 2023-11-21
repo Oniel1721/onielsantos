@@ -2,10 +2,10 @@
 const { title } = Astro.props as { title: string };
 ---
 
-<div class="skill" title={title}>
+<li class="skill" title={title}>
   <slot />
   {title}
-</div>
+</li>
 
 <style>
   .skill {
