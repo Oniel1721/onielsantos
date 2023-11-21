@@ -4,8 +4,12 @@ export const skills = [
     name: "JavaScript",
   },
   {
+    icon: "/icons/typescript-icon.svg",
+    name: "TypeScript",
+  },
+  {
     icon: "/icons/aws-icon.svg",
-    name: "Amazon Web Services",
+    name: "AWS",
   },
   {
     icon: "/icons/postgresql-icon.svg",
@@ -42,10 +46,6 @@ export const skills = [
   {
     icon: "/icons/graphql-icon.svg",
     name: "GraphQL",
-  },
-  {
-    icon: "/icons/typescript-icon.svg",
-    name: "TypeScript",
   },
   {
     icon: "/icons/nextjs-icon.svg",

@@ -1,0 +1,21 @@
+---
+const { chip, time, title, company } = Astro.props as {
+  title: string;
+  chip?: string;
+  time: string;
+  company?: string;
+};
+---
+
+<li class="experience-item">
+  <div class="experience-point"></div>
+  <h3 class="experience-title">
+    {title}
+    {chip ? <span>{chip}</span> : null}
+  </h3>
+  <span></span>
+  <time>{company ? `at ${company} ` : ""} {time}</time>
+  <p class="experience-body">
+    <slot />
+  </p>
+</li>
