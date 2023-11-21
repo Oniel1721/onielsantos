@@ -31,3 +31,15 @@ import TsIcon from "./icons/TsIcon.astro";
   <GraphIcon />
   <AwsIcon />
 </ul>
+
+<style is:global>
+  .tech-list {
+    display: grid;
+    gap: 1rem 0.5rem;
+    list-style: none;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  }
+</style>

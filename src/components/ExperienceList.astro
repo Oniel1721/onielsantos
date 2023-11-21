@@ -56,3 +56,26 @@ import ExperienceItem from "./ExperienceItem.astro";
     Developed UI components using <span>React</span> and Material UI.
   </ExperienceItem>
 </ul>
+
+<style is:global>
+  .experience-list {
+    position: relative;
+    border-inline-start-width: 1px;
+    border-inline-start-style: solid;
+    border-color: var(--secondary);
+    list-style: none;
+  }
+  .experience-body {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--secondary);
+    font-weight: 300;
+    text-wrap: balance;
+  }
+
+  .experience-body span {
+    color: var(--primary);
+    font-weight: 600;
+  }
+</style>

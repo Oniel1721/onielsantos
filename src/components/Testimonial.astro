@@ -12,3 +12,82 @@ const { body, name, position } = Astro.props as {
     <cite class="testimonial-cite">{name} - <span>{position}</span></cite>
   </footer>
 </article>
+
+<style is:global>
+  .testimonial {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    background-color: #00000050;
+    padding: 1rem;
+    border-inline-start: var(--testimonial-border);
+    border-block-start: var(--testimonial-border);
+  }
+
+  .testimonial:first-child {
+    border-block-start: none;
+  }
+
+  .testimonial:last-child {
+    border-block-end: var(--testimonial-border);
+  }
+
+  .testimonial:nth-child(even) {
+    border-inline-start: none;
+    border-inline-end: var(--testimonial-border);
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
+    border-block-start: var(--testimonial-border);
+  }
+
+  .testimonial:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    bottom: calc(100% + 4px);
+    left: 0;
+    border-inline-start: var(--testimonial-border);
+  }
+
+  .testimonial:nth-child(even)::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    top: calc(100%);
+    inset-inline-end: -4px;
+    border-inline-end: var(--testimonial-border);
+  }
+
+  .testimonial:nth-child(even):last-child {
+    border-block-end: none;
+  }
+
+  .testimonial:nth-child(even):last-child::after {
+    content: none;
+  }
+
+  .testimonial-body {
+    color: var(--secondary);
+    font-size: 0.9em;
+    font-weight: 300;
+    text-wrap: balance;
+  }
+  .testimonial-footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-cite {
+    color: var(--primary);
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+  .testimonial-cite span {
+    opacity: 0.75;
+  }
+</style>
