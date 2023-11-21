@@ -4,22 +4,12 @@ import Nav from "./Nav.astro";
 
 <div class="profile-container">
   <img
-    class="profile unloaded"
-    src="/images/profile_small.webp"
+    class="profile"
+    src="/images/profile.webp"
     alt="Oniel Santos"
     height="300"
     width="300"
   />
-  <script>
-    const profile = document.querySelector(".profile") as HTMLImageElement;
-    fetch("/images/profile.webp")
-      .then((res) => res.blob())
-      .then((blob) => {
-        const url = URL.createObjectURL(blob);
-        profile.src = url;
-        profile.classList.remove("unloaded");
-      });
-  </script>
   <div class="profile-caption">
     <h1 class="profile-name">Oniel Santos</h1>
     <h2 class="profile-position">Full-Stack Developer</h2>
@@ -43,16 +33,10 @@ import Nav from "./Nav.astro";
   }
 
   .profile {
-    position: relative;
     width: clamp(200px, 40%, 360px);
     height: auto;
     border-radius: 50%;
     border: 2px solid var(--primary);
-    transition: filter 0.5s ease-in-out;
-  }
-
-  .profile.unloaded {
-    filter: blur(5px);
   }
 
   .profile-caption {
