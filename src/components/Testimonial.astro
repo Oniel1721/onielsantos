@@ -23,53 +23,55 @@ const { body, name, position } = Astro.props as {
     text-align: start;
     background-color: #00000050;
     padding: 1rem;
-    border-inline-start: var(--testimonial-border);
-    border-block-start: var(--testimonial-border);
     gap: 0.5rem;
   }
 
-  .testimonial:first-child {
-    border-block-start: none;
+  .testimonial::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: calc(100% + 1rem);
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    animation-range: 4rem 16.15rem;
   }
 
-  .testimonial:last-child {
-    border-block-end: var(--testimonial-border);
+  .testimonial::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    inset-block-start: calc(100% + 1rem);
+    inset-inline-start: 0;
+    z-index: 1;
+    animation-range: 4rem 4.25rem;
   }
 
-  .testimonial:nth-child(even) {
-    border-inline-start: none;
-    border-inline-end: var(--testimonial-border);
-    border-end-end-radius: 0;
-    border-start-end-radius: 0;
-    border-block-start: var(--testimonial-border);
+  .testimonial::before,
+  .testimonial::after {
+    animation-name: scaleY;
+    animation-timeline: view();
+    transform-origin: top;
+    transform: scaleY(0);
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    background-color: var(--primary);
+  }
+
+  @keyframes scaleY {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
   }
 
   .testimonial:nth-child(even)::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1rem;
-    bottom: calc(100% + 4px);
-    left: 0;
-    border-inline-start: var(--testimonial-border);
-  }
-
-  .testimonial:nth-child(even)::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1rem;
-    top: calc(100%);
-    inset-inline-end: -4px;
-    border-inline-end: var(--testimonial-border);
-  }
-
-  .testimonial:nth-child(even):last-child {
-    border-block-end: none;
-  }
-
-  .testimonial:nth-child(even):last-child::after {
-    content: none;
+    width: 4px;
+    height: calc(100% + 1rem);
+    inset-block-start: 0;
+    inset-inline-start: calc(100% - 4px);
   }
 
   .testimonial-body {
@@ -77,6 +79,8 @@ const { body, name, position } = Astro.props as {
     font-size: 1rem;
     font-weight: 300;
     text-wrap: balance;
+    height: 8.5rem;
+    overflow-y: auto;
   }
   .testimonial-footer {
     display: flex;

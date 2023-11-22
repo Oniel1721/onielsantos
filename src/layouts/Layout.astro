@@ -92,6 +92,26 @@
         justify-content: center;
         flex-wrap: wrap;
       }
+
+      .color-title {
+        color: var(--color);
+        animation-name: changeTitleColor;
+        animation-timeline: view();
+        animation-range: 30% 100%;
+        animation-fill-mode: both;
+      }
+
+      @keyframes changeTitleColor {
+        0% {
+          color: var(--color);
+        }
+        20% {
+          color: var(--primary);
+        }
+        100% {
+          color: var(--primary);
+        }
+      }
     </style>
   </body>
 </html>
