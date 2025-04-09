@@ -15,9 +15,9 @@ const { chip, time, title, company } = Astro.props as {
   </h3>
   <span></span>
   <time>{company ? `at ${company} ` : ""} {time}</time>
-  <p class="experience-body">
+  <div class="experience-body">
     <slot />
-  </p>
+  </div>
 </li>
 
 <style is:global>
@@ -80,5 +80,16 @@ const { chip, time, title, company } = Astro.props as {
     line-height: 1;
     color: var(--secondary);
     opacity: 0.75;
+  }
+
+  .experience-body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding-inline-start: 1rem;
+  }
+
+  .experience-body ul {
+    padding-inline-start: 1.5rem;
   }
 </style>

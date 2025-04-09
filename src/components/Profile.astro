@@ -5,18 +5,19 @@ import Nav from "./Nav.astro";
 <div class="profile-container">
   <img
     class="profile"
-    src="/images/profile.webp"
+    src="/images/oniel-profile.webp"
     alt="Oniel Santos"
     height="300"
     width="300"
   />
   <div class="profile-caption">
     <h1 class="profile-name">Oniel Santos</h1>
-    <h2 class="profile-position">Full-Stack Developer</h2>
+    <h2 class="profile-position">Software Engineer</h2>
     <p class="profile-bio">
-      <span>+4</span> years of experience self-taught. Worked in the
-      <span>Healthcare industry</span> and <span>E-commerce</span>. Love
-      teaching and sharing knowledge.
+      Software Engineer with <strong>over 5 years of experience</strong> in fullstack
+      development, working with Node.js, Nest.js, React.js, Next.js, TypeScript,
+      JavaScript, AWS, and Docker. I’ve created solutions for industries like healthcare,
+      business administration, small businesses and more.
     </p>
 
     <Nav />
@@ -37,6 +38,8 @@ import Nav from "./Nav.astro";
     height: auto;
     border-radius: 50%;
     border: 2px solid var(--primary);
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 
   .profile-caption {
@@ -62,7 +65,7 @@ import Nav from "./Nav.astro";
     font-weight: 300;
   }
 
-  .profile-bio span {
+  .profile-bio strong {
     color: var(--primary);
     font-weight: 600;
   }
