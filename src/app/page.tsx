@@ -1,10 +1,10 @@
-import TechList from "@/components/TechList";
 import ExperienceList from "@/components/ExperienceList";
-import Testimonials from "@/components/Testimonials";
-import Profile from "@/components/Profile";
 import Footer from "@/components/Footer";
-import Section from "@/components/Section";
 import Main from "@/components/Main";
+import Profile from "@/components/Profile";
+import Section from "@/components/Section";
+import TechList from "@/components/TechList";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
