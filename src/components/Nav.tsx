@@ -22,8 +22,8 @@ export default function Nav() {
           Download CV
         </ButtonExternalLink>
       </nav>
-      <a style={{ display: "block" }} href="mailto:oniel.san.alv@gmail.com">
-        oniel.san.alv@gmail.com
+      <a style={{ display: "block" }} href="mailto:onielsantosdev@gmail.com">
+        onielsantosdev@gmail.com
       </a>
     </>
   );
