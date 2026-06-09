@@ -6,7 +6,7 @@ import Section from "@/components/Section";
 import TechList from "@/components/TechList";
 import Testimonials from "@/components/Testimonials";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Main>

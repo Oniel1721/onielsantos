@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
   title: "Oniel Santos - Full Stack Developer",
@@ -23,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="dark" lang="en">
-      <body>{children}</body>
+      <TRPCReactProvider>
+        <body>{children}</body>
+      </TRPCReactProvider>
     </html>
   );
 }

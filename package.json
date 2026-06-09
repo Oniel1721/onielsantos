@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome lint --write --unsafe",
@@ -15,12 +15,17 @@
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@t3-oss/env-nextjs": "^0.13.11",
+    "@tanstack/react-query": "^5.101.0",
+    "@trpc/client": "^11.17.0",
+    "@trpc/react-query": "^11.17.0",
+    "@trpc/server": "^11.17.0",
     "dotenv": "^17.4.2",
     "next": "16.2.7",
     "pg": "^8.21.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.0.0",
+    "superjson": "^2.2.6",
     "zod": "^4.4.3"
   },
   "devDependencies": {

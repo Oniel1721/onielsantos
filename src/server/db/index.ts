@@ -1,7 +1,7 @@
 import { PrismaClient } from "@db/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import pg from "pg";
-import { env } from "@/env";
+import { env } from "@/lib/env";
 
 const { Pool } = pg;
 
