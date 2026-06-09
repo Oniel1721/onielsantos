@@ -1,9 +1,0 @@
-
-
-model Project {
-    id String @id @default(nanoid())
-    name String
-    description String?
-    createdAt DateTime @default(now())
-    deletedAt DateTime?
-}

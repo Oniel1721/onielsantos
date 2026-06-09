@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome lint --write --unsafe",
-    "db:gen": "prisma generate"
+    "db:gen": "prisma generate",
+    "db:push": "prisma db push"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
