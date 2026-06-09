@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { TRPCReactProvider } from "@/trpc/react";
+import { TRPCReactProvider } from "@/lib/trpc/react";
 
 export const metadata: Metadata = {
   title: "Oniel Santos - Full Stack Developer",
