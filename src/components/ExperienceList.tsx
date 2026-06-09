@@ -1,0 +1,109 @@
+import ExperienceItem from "./ExperienceItem";
+
+export default function ExperienceList() {
+  return (
+    <ul className="experience-list">
+      <ExperienceItem
+        title="Senior Software Engineer"
+        time="- USA (Remote) Dec 2024 - Present"
+        company="Thryv"
+      >
+        Thryv helps small businesses manage customers, simplify operations, and
+        grow online with an all-in-one platform.
+        <ul>
+          <li>
+            Built a subscription management system with Nodejs and Expressjs to
+            process refunds, integrating with third-party services and
+            supporting operations in 6 countries.
+          </li>
+          <li>
+            Developed Reactjs and Typescript components for users with specific
+            roles, enabling access and actions based on their permissions.
+          </li>
+          <li>
+            Deployed a Redis server using Docker, making data access faster and
+            improving system efficiency for 55.000 small businesses worldwide.
+          </li>
+          <li>
+            Updated the MySQL database schema by creating new tables and adding
+            migrations to ensure proper functionality in production.
+          </li>
+        </ul>
+        <p>
+          <span>Techstack: </span> Node, Express, React, Typescript, Javascript,
+          Tailwind, Redis, Docker, MySQL, Amazon Web Services, Git, Gitlab,
+          Jira, Scrum, Agile.
+        </p>
+      </ExperienceItem>
+
+      <ExperienceItem
+        title="Software Engineer"
+        time="- United States (Remote) Jan 2023 - Nov 2024"
+        company="Vertrical"
+      >
+        Vertrical assists digital health companies in developing scalable and
+        compliant software solutions for global markets.
+        <ul>
+          <li>
+            Built a microservices platform with Node, Nest, and TypeScript,
+            enabling multi-tenancy and various business solutions, reducing
+            processing time from 15 seconds to under 1 second.
+          </li>
+          <li>
+            Developed a microfrontend infrastructure with Next and React,
+            assembling projects based on client needs for over 10,000 customers.
+          </li>
+          <li>
+            Implemented AWS S3, SES, and authentication services, improving
+            security and scalability for cloud storage and communication.
+          </li>
+          <li>
+            Deployed microservices on Docker servers with a gateway connecting
+            them through Kafka, making the system more efficient and reliable.
+          </li>
+        </ul>
+        <p>
+          <span>Techstack: </span> Node, Nest, React 18, Next, Typescript,
+          Javascript, Styled Components, Kafka, PostgreSQL, Amazon Web Services,
+          AWS S3, AWS SES, AWS IAM, Docker, Rest APIs, CyberSource, Sanity,
+          Jest, Git, Github, Scrum, Agile.
+        </p>
+      </ExperienceItem>
+
+      <ExperienceItem
+        title="Software Developer"
+        time="- Dominican Republic (Remote) Apr 2020 - Dec 2022"
+        company="Intellisys D. Corp."
+      >
+        Intellisys develops custom software solutions and helps businesses
+        implement digital strategies, focusing on web, mobile, and enterprise
+        applications.
+        <ul>
+          <li>
+            Developed a secure API with Nest, Node and TypeScript for a
+            vaccination management system, handling records and appointments for
+            over 10 million citizens.
+          </li>
+          <li>
+            Built backoffice dashboards with React and Javascript for government
+            access and administration of vaccination data, improving data
+            management and decision-making.
+          </li>
+          <li>
+            Created GitHub Actions pipelines for deploying applications with
+            Docker, automating the deployment process.
+          </li>
+          <li>
+            Implemented Elasticsearch to index records and citizen data,
+            reducing search time from 10 seconds to under 500 microseconds.
+          </li>
+        </ul>
+        <p>
+          <span>Techstack: </span> Node, Nest, React, Typescript, Javascript,
+          Material UI, CSS, Stripe, Strapi, GitHub Actions, Docker, Postgres,
+          MongoDB, Elasticsearch, Jest, Git, Github, Scrum, Agile.
+        </p>
+      </ExperienceItem>
+    </ul>
+  );
+}
