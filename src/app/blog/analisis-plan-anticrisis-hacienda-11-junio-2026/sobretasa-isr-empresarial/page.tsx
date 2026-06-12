@@ -233,12 +233,18 @@ export default function SobretasaISRPage() {
         <H3>¿El umbral de RD$1,000 millones es de ingresos brutos o netos?</H3>
         <P>
           El umbral de clasificación es de{" "}
-          <strong className="text-slate-100">ingresos brutos</strong>. La DGII
-          clasifica a los contribuyentes usando ventas brutas como criterio
-          principal. Una vez clasificada, la empresa tributa sobre su{" "}
-          <strong className="text-slate-100">renta neta imponible</strong>{" "}
-          (ingresos brutos menos gastos y deducciones permitidas), que es la
-          base sobre la que se aplica la tasa del 30%.
+          <strong className="text-slate-100">ingresos brutos</strong> (ventas
+          totales). La DGII clasifica a los contribuyentes usando ese criterio
+          de forma interna. Pero la clasificación y la base del impuesto son
+          cosas distintas: la tasa del 30% no se aplica sobre los ingresos
+          brutos, sino sobre la{" "}
+          <strong className="text-slate-100">renta neta imponible</strong> —
+          las ganancias netas que resultan del cierre fiscal (ingresos totales
+          menos todos los gastos y deducciones reconocidos por la DGII).
+          Dicho de otro modo: si una empresa factura RD$2,000 millones pero
+          tiene RD$1,800 millones en costos y gastos deducibles, tributa sobre
+          los RD$200 millones de ganancia neta, no sobre los RD$2,000
+          millones.
         </P>
         <SourceNote>
           <strong className="text-slate-400">Fuentes:</strong>{" "}
@@ -292,13 +298,13 @@ export default function SobretasaISRPage() {
             ],
             [
               "Banco Popular Dominicano",
-              "Utilidades netas RD$26,940 MM en 2024",
-              "Reporte Grupo Popular 2024",
+              "Utilidades antes de impuestos RD$34,917 MM; ISR pagado RD$7,788 MM; utilidades netas RD$27,129 MM en 2024",
+              <A key="pop" href="https://acento.com.do/actualidad/banco-popular-logra-excelentes-resultados-en-2024-con-ganancias-de-27-mil-millones-de-pesos-en-2024-9457678.html">Acento — Banco Popular 2024</A>,
             ],
             [
               "BHD",
-              "Utilidades netas RD$13,224 MM en 2024",
-              "Reporte BHD 2024",
+              "Utilidades netas RD$13,224 MM en 2024 (pre-impuesto estimado ~RD$17,019 MM)",
+              <A key="bhd" href="https://www.diariolibre.com/economia/negocios/2025/03/30/resultados-financieros-del-banco-bhd/3053113">Diario Libre — BHD 2024</A>,
             ],
             [
               "Cervecería Nacional Dominicana",
@@ -362,20 +368,20 @@ export default function SobretasaISRPage() {
           headers={[
             "Empresa",
             "Empleados",
-            "Sobretasa estimada (3% s/ renta neta)",
+            "Sobretasa estimada (3% s/ renta neta imponible)",
           ]}
           rows={[
-            ["Banreservas", "~12,760 directos", "~RD$827 MM/año"],
+            ["Banreservas", "~12,760 directos", "~RD$1,064 MM/año"],
             [
               "Banco Popular Dominicano",
               "~4,000–5,000 directos (estimado)",
-              "~RD$808 MM/año",
+              "~RD$1,048 MM/año",
             ],
-            ["BHD", "N/D", "~RD$397 MM/año"],
+            ["BHD", "N/D", "~RD$511 MM/año"],
             [
               "Claro Dominicana",
               "+15,000 directos e indirectos",
-              "No calculable (utilidad neta no pública)",
+              "No calculable (utilidad antes de impuestos no pública)",
             ],
             ["Altice Dominicana", "~2,000–3,000 directos", "No calculable"],
             ["Cervecería Nacional / León Jimenes", "N/D", "No calculable"],
@@ -389,20 +395,24 @@ export default function SobretasaISRPage() {
               cells: [
                 <strong key="b3">Banca (3 bancos grandes, combinado)</strong>,
                 "—",
-                <strong key="tot">~RD$2,032 MM/año</strong>,
+                <strong key="tot">~RD$2,623 MM/año</strong>,
               ],
               highlight: true,
             },
           ]}
         />
         <SourceNote>
-          La sobretasa estimada se calcula como{" "}
+          El ISR aplica sobre la renta neta imponible (utilidad{" "}
+          <em>antes</em> de impuestos), no sobre la utilidad neta contable.
+          Para Banco Popular se usó el dato real publicado (RD$34,917 MM
+          pre-impuesto, tasa efectiva 22.3%). Para Banreservas y BHD, donde
+          solo se dispone de utilidad neta, se estimó la renta neta imponible
+          usando la misma tasa efectiva como proxy:{" "}
           <code className="font-mono text-[0.85em] bg-[#1e2535] px-1 rounded">
-            utilidad neta reportada × 3%
-          </code>{" "}
-          y es una aproximación — la renta neta imponible fiscal puede diferir
-          de la utilidad contable. Solo fue posible calcularlo para los bancos,
-          que publican estados financieros con detalle suficiente.
+            utilidad neta / (1 − 0.223) × 3%
+          </code>
+          . La renta neta imponible fiscal puede diferir adicionalmente de la
+          utilidad contable por deducciones especiales.
         </SourceNote>
 
         {/* ── SECTION 4 ── */}
