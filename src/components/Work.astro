@@ -1,0 +1,439 @@
+---
+import QueueMockup from "./mockups/QueueMockup.astro";
+import LegalMockup from "./mockups/LegalMockup.astro";
+import GeoMockup from "./mockups/GeoMockup.astro";
+
+const featured = {
+  kind: "HealthTech · SaaS",
+  title: "Medical appointment & queue platform",
+  summary:
+    "Clinics run on paper lists and guesswork. This platform turns scheduled appointments, walk-ins and doctor availability into one live queue that patients can follow from their phone.",
+  problem: "Unpredictable waiting rooms and manual check-in.",
+  role: "Architecture, API and web app — end to end.",
+  highlights: [
+    "Dynamic queue that re-estimates wait times on every check-in",
+    "Doctor schedules, shifts and appointment slots",
+    "Patient check-in with real-time status updates",
+  ],
+  stack: ["NestJS", "PostgreSQL", "Next.js", "WebSockets", "AWS"],
+};
+
+const projects = [
+  {
+    kind: "LegalTech",
+    title: "Dominican legislation search engine",
+    summary:
+      "Full-text search across Dominican law with versioned documents, article-level links and relationships between laws, regulations and jurisprudence.",
+    highlights: ["Versioned legal documents", "Deep links to individual articles", "Regulation ↔ jurisprudence graph"],
+    stack: ["PostgreSQL", "Full-text search", "Node.js", "Next.js"],
+    mockup: LegalMockup,
+  },
+  {
+    kind: "Public API",
+    title: "Dominican Republic geographic API",
+    summary:
+      "A clean REST API for provinces, municipalities and districts, backed by PostGIS so any coordinate can be resolved to its administrative area.",
+    highlights: ["Hierarchical administrative data", "Point-in-polygon lookups", "Documented, versioned endpoints"],
+    stack: ["PostGIS", "PostgreSQL", "NestJS", "OpenAPI"],
+    mockup: GeoMockup,
+  },
+];
+
+const shipped = [
+  {
+    company: "Thryv",
+    title: "AI workflow automation",
+    detail: "Claude AI integrated into internal support and operations workflows, reducing manual workload by 40%.",
+    stack: "Claude · Node.js · NestJS",
+  },
+  {
+    company: "Vertrical",
+    title: "Multi-tenant microservices platform",
+    detail: "Kafka-connected services for digital-health clients; processing time dropped from 15s to under 1s.",
+    stack: "NestJS · Kafka · AWS",
+  },
+  {
+    company: "Intellisys",
+    title: "National vaccination records API",
+    detail: "Records and appointments for 10M+ citizens; Elasticsearch cut search from 10s to sub-millisecond.",
+    stack: "NestJS · Elasticsearch",
+  },
+];
+---
+
+<section class="section work" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <header class="section-head">
+      <span class="eyebrow">Selected work</span>
+      <h2 class="section-title" id="work-title" data-reveal="clip">
+        Products I've architected, built <span class="serif">and</span> shipped.
+      </h2>
+      <p class="section-lead" data-reveal="up" style="--i:1">
+        Each one owned end to end — data model, API, interface and deployment.
+      </p>
+    </header>
+
+    <article class="card card-featured" data-spotlight data-reveal="up">
+      <div class="card-body">
+        <span class="kind">{featured.kind}</span>
+        <h3 class="card-title">{featured.title}</h3>
+        <p class="card-summary">{featured.summary}</p>
+
+        <dl class="facts">
+          <div>
+            <dt>Problem</dt>
+            <dd>{featured.problem}</dd>
+          </div>
+          <div>
+            <dt>My role</dt>
+            <dd>{featured.role}</dd>
+          </div>
+        </dl>
+
+        <ul class="highlights" role="list">
+          {featured.highlights.map((h) => <li>{h}</li>)}
+        </ul>
+
+        <ul class="tags" role="list" aria-label="Technologies">
+          {featured.stack.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card-media">
+        <QueueMockup />
+      </div>
+    </article>
+
+    <div class="grid-2">
+      {
+        projects.map((p, i) => (
+          <article class="card card-stacked" data-spotlight data-reveal="up" style={`--i:${i}`}>
+            <div class="card-media">
+              <p.mockup />
+            </div>
+            <div class="card-body">
+              <span class="kind">{p.kind}</span>
+              <h3 class="card-title">{p.title}</h3>
+              <p class="card-summary">{p.summary}</p>
+              <ul class="highlights" role="list">
+                {p.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+              <ul class="tags" role="list" aria-label="Technologies">
+                {p.stack.map((s) => (
+                  <li>{s}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="shipped">
+      <h3 class="shipped-title">Also shipped in production</h3>
+      <ul class="shipped-list" role="list">
+        {
+          shipped.map((s, i) => (
+            <li data-reveal="fade" style={`--i:${i}`}>
+              <span class="shipped-company">{s.company}</span>
+              <p class="shipped-name">{s.title}</p>
+              <p class="shipped-detail">{s.detail}</p>
+              <span class="shipped-stack">{s.stack}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .card {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elevated);
+    overflow: hidden;
+    isolation: isolate;
+    transition: border-color var(--dur-2) var(--ease-out);
+  }
+
+  /* Cursor-following border highlight */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 0%),
+      color-mix(in oklch, var(--accent) 70%, transparent),
+      transparent 45%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--ease-out);
+    pointer-events: none;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+
+  .kind {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-ink);
+  }
+
+  .card-title {
+    font-size: var(--step-2);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .card-summary {
+    color: var(--text-2);
+    max-width: 34rem;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--border);
+  }
+
+  .facts dt {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    margin-bottom: var(--space-1);
+  }
+
+  .facts dd {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .highlights {
+    display: grid;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+    color: var(--text-2);
+  }
+
+  .highlights li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 8px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .card .tags {
+    margin-top: auto;
+    padding-top: var(--space-2);
+  }
+
+  .card-media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: clamp(2rem, 1rem + 4vw, 3.5rem) clamp(1.25rem, 1rem + 2vw, 3rem);
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 100%, var(--glow), transparent 70%),
+      radial-gradient(circle at 1px 1px, var(--grid-line) 1px, transparent 0) 0 0 / 16px 16px,
+      var(--surface);
+  }
+
+  .card-media > :global(*) {
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+
+  .card:hover .card-media > :global(*) {
+    transform: translateY(-4px);
+  }
+
+  /* Featured: text + large media side by side */
+  .card-featured {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .card-featured .card-media {
+    border-left: 1px solid var(--border);
+    padding-bottom: clamp(3rem, 2rem + 4vw, 4.5rem);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+  }
+
+  .card-stacked {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-stacked .card-media {
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Subgrid keeps media and body rows aligned across both cards */
+  @media (min-width: 1024px) {
+    @supports (grid-template-rows: subgrid) {
+      .grid-2 {
+        grid-template-rows: auto auto;
+      }
+
+      .grid-2 .card-stacked {
+        display: grid;
+        grid-row: span 2;
+        grid-template-rows: subgrid;
+        row-gap: 0;
+      }
+    }
+  }
+
+  /* Also shipped — deliberately not cards */
+  .shipped {
+    margin-top: clamp(3.5rem, 2rem + 5vw, 5.5rem);
+  }
+
+  .shipped-title {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .shipped-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+  }
+
+  .shipped-list li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-5) var(--space-5) 0;
+  }
+
+  .shipped-list li + li {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--border);
+  }
+
+  .shipped-company {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--text-3);
+  }
+
+  .shipped-name {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .shipped-detail {
+    color: var(--text-2);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .shipped-stack {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--text-3);
+  }
+
+  @media (max-width: 1023px) {
+    .card-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .card-featured .card-media {
+      order: -1;
+      border-left: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .shipped-list {
+      grid-template-columns: 1fr;
+    }
+
+    .shipped-list li,
+    .shipped-list li + li {
+      padding: var(--space-5) 0;
+      border-left: 0;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .grid-2 .card-stacked {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .grid-2 .card-stacked .card-media {
+      border-bottom: 0;
+      border-right: 1px solid var(--border);
+      padding-inline: var(--space-4);
+    }
+  }
+
+  @media (max-width: 559px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+
+    .card-stacked .card-media {
+      min-height: 0;
+    }
+  }
+</style>

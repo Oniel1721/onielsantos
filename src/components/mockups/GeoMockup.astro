@@ -1,0 +1,140 @@
+---
+const municipalities = ["Santiago de los Caballeros", "Tamboril", "Villa González", "Licey al Medio"];
+---
+
+<div class="mock" aria-hidden="true">
+  <div class="req">
+    <span class="method">GET</span>
+    <span class="path">/v1/provinces/santiago/municipalities</span>
+    <span class="status">200</span>
+  </div>
+
+  <div class="code">
+<span class="l"><span class="p">{"{"}</span></span>
+<span class="l">  <span class="k">"province"</span>: <span class="s">"Santiago"</span>,</span>
+<span class="l">  <span class="k">"region"</span>: <span class="s">"Cibao Norte"</span>,</span>
+<span class="l">  <span class="k">"total"</span>: <span class="n">9</span>,</span>
+<span class="l">  <span class="k">"data"</span>: [</span>
+{municipalities.map((m, i) => <span class="l" style={`--i:${i}`}>    {"{ "}<span class="k">"name"</span>: <span class="s">"{m}"</span>{" },"}</span>)}<span class="l dim">    …</span>
+<span class="l">  ]</span>
+<span class="l"><span class="p">{"}"}</span></span>
+  </div>
+
+  <div class="query">
+    <span class="q-label">PostGIS</span>
+    <code>ST_Contains(boundary, ST_Point(-70.69, 19.45))</code>
+    <span class="q-result">→ Santiago de los Caballeros</span>
+  </div>
+</div>
+
+<style>
+  .mock {
+    width: min(100%, 440px);
+    margin-inline: auto;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-2);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    overflow: hidden;
+  }
+
+  .req {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+  }
+
+  .method {
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-weight: 500;
+  }
+
+  .path {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .status {
+    margin-left: auto;
+    color: var(--ok);
+  }
+
+  .code {
+    padding: 12px 14px;
+    line-height: 1.7;
+    overflow: hidden;
+    color: var(--text-2);
+  }
+
+  .l {
+    display: block;
+    white-space: pre;
+  }
+
+  .k {
+    color: var(--info);
+  }
+
+  .s {
+    color: var(--accent-ink);
+  }
+
+  .n {
+    color: var(--ok);
+  }
+
+  .p,
+  .dim {
+    color: var(--text-3);
+  }
+
+  .query {
+    display: grid;
+    gap: 4px;
+    padding: 12px 14px;
+    border-top: 1px dashed var(--border-strong);
+    background: var(--surface);
+  }
+
+  .q-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+  }
+
+  .query code {
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .q-result {
+    color: var(--ok);
+  }
+
+  /* Rows of the response stream in on hover */
+  @media (prefers-reduced-motion: no-preference) {
+    :global([data-spotlight]:hover) .l[style] {
+      animation: stream 480ms var(--ease-out) both;
+      animation-delay: calc(var(--i) * 70ms);
+    }
+
+    @keyframes stream {
+      from {
+        opacity: 0;
+        transform: translateX(-6px);
+      }
+    }
+  }
+</style>

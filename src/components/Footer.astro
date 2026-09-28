@@ -1,22 +1,65 @@
+---
+import Mark from "./Mark.astro";
+import { links } from "../data/site";
+---
+
 <footer class="footer">
-  <p>
-    Made with{" "}
-    <a href="https://astro.build/" target="_blank"> Astro</a>
-    Source code on <a
-      href="https://github.com/Oniel1721/onielsantos"
-      target="_blank">GitHub</a
-    >
-  </p>
-  <p>Copyright © {new Date().getFullYear()} Oniel Santos</p>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <Mark size={20} />
+      <span>© {new Date().getFullYear()} Oniel Santos</span>
+    </div>
+    <p class="footer-meta">
+      Designed &amp; built by me with <a class="link" href="https://astro.build/" target="_blank" rel="noopener">Astro</a>. Source on <a
+        class="link"
+        href={links.source}
+        target="_blank"
+        rel="noopener">GitHub</a
+      >.
+    </p>
+    <a class="footer-top" href="#top">Back to top ↑</a>
+  </div>
 </footer>
 
-<style is:global>
+<style>
   .footer {
-    width: 100%;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 2rem;
-    font-weight: 500;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-6);
+    padding-block: var(--space-6);
+    font-size: var(--step--1);
+    color: var(--text-3);
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-2);
+  }
+
+  .footer-meta a {
+    color: var(--text-2);
+  }
+
+  .footer-top {
+    transition: color var(--dur-1) var(--ease-out);
+  }
+
+  .footer-top:hover {
+    color: var(--text);
+  }
+
+  @media (max-width: 719px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>

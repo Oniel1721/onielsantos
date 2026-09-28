@@ -1,0 +1,183 @@
+---
+const capabilities = [
+  {
+    n: "01",
+    title: "SaaS product engineering",
+    body: "Multi-tenant products taken from a blank repo to paying users — auth, billing, roles and the unglamorous parts that make them hold up.",
+    tech: ["Next.js", "NestJS", "Stripe"],
+  },
+  {
+    n: "02",
+    title: "Backend architecture",
+    body: "Services, queues and data models designed to stay simple as traffic and teams grow. Microservices only when they earn it.",
+    tech: ["Node.js", "Kafka", "Redis"],
+  },
+  {
+    n: "03",
+    title: "API design",
+    body: "Predictable, versioned REST APIs with clear contracts and documentation other teams actually enjoy integrating with.",
+    tech: ["REST", "OpenAPI", "GraphQL"],
+  },
+  {
+    n: "04",
+    title: "Frontend & interfaces",
+    body: "Landing pages and product UI built with semantic HTML, modern CSS and restrained motion — responsive, accessible and fast.",
+    tech: ["React", "TypeScript", "CSS"],
+  },
+  {
+    n: "05",
+    title: "Data & search",
+    body: "Relational schemas, geospatial queries and search indexes tuned for the questions the product needs to answer.",
+    tech: ["PostgreSQL", "PostGIS", "Elasticsearch"],
+  },
+  {
+    n: "06",
+    title: "Cloud & delivery",
+    body: "Containerised deployments, CI pipelines and AWS infrastructure that make shipping small changes routine.",
+    tech: ["AWS", "Docker", "GitHub Actions"],
+  },
+];
+---
+
+<section class="section capabilities" id="capabilities" aria-labelledby="cap-title">
+  <div class="container">
+    <header class="section-head">
+      <span class="eyebrow">Capabilities</span>
+      <h2 class="section-title" id="cap-title" data-reveal="clip">
+        One engineer across the <span class="serif">whole</span> stack.
+      </h2>
+      <p class="section-lead" data-reveal="up" style="--i:1">
+        I'm most useful where product, backend and interface meet — turning a rough idea into something reliable
+        people want to use.
+      </p>
+    </header>
+
+    <ul class="cap-grid" role="list">
+      {
+        capabilities.map((c, i) => (
+          <li class="cap" data-reveal="blur" style={`--i:${i % 3}`}>
+            <span class="cap-n">{c.n}</span>
+            <h3 class="cap-title">{c.title}</h3>
+            <p class="cap-body">{c.body}</p>
+            <p class="cap-tech">{c.tech.join(" · ")}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .cap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--dur-2) var(--ease-out);
+  }
+
+  /* Accent tick grows along the top edge on hover */
+  .cap::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+
+  .cap:hover {
+    background: color-mix(in oklch, var(--surface) 60%, transparent);
+  }
+
+  .cap:hover::before {
+    transform: scaleX(1);
+  }
+
+  .cap-n {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--text-3);
+    transition: color var(--dur-2) var(--ease-out);
+  }
+
+  .cap:hover .cap-n {
+    color: var(--accent-ink);
+  }
+
+  .cap-title {
+    margin-top: var(--space-5);
+    font-size: 1.125rem;
+    letter-spacing: -0.015em;
+  }
+
+  .cap-body {
+    color: var(--text-2);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .cap-tech {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--text-3);
+  }
+
+  @media (max-width: 1023px) {
+    .cap-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 599px) {
+    .cap-grid {
+      grid-template-columns: 1fr;
+      border-left: 0;
+    }
+
+    .cap {
+      display: grid;
+      grid-template-columns: 2.25rem 1fr;
+      gap: var(--space-2) 0;
+      padding: var(--space-5) 0;
+      border-right: 0;
+    }
+
+    .cap > :not(.cap-n) {
+      grid-column: 2;
+    }
+
+    .cap-n {
+      grid-row: 1;
+      padding-top: 0.2em;
+    }
+
+    .cap:hover {
+      background: none;
+    }
+
+    .cap-title {
+      margin-top: 0;
+    }
+
+    .cap-tech {
+      padding-top: var(--space-1);
+    }
+  }
+</style>
