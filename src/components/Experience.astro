@@ -1,0 +1,242 @@
+---
+import Icon from "./Icon.astro";
+import { links } from "../data/site";
+
+const roles = [
+  {
+    period: "Dec 2024 — Now",
+    role: "Senior Software Engineer",
+    company: "Thryv",
+    context: "All-in-one platform for small businesses · USA, remote",
+    achievements: [
+      "Integrated Claude AI into internal workflows to automate support and operational tasks, reducing manual workload by 40%.",
+      "Built the subscription management system with Node.js and NestJS that processes refunds across 6 countries, integrated with third-party billing services.",
+    ],
+    current: true,
+  },
+  {
+    period: "Jan 2023 — Nov 2024",
+    role: "Software Engineer",
+    company: "Vertrical",
+    context: "Scalable, compliant software for digital-health companies · USA, remote",
+    achievements: [
+      "Built a multi-tenant microservices platform with NestJS and Kafka, cutting processing time from 15s to under 1s.",
+      "Created the Next.js micro-frontend infrastructure used to assemble products for 10,000+ customers.",
+    ],
+  },
+  {
+    period: "Apr 2020 — Dec 2022",
+    role: "Software Developer",
+    company: "Intellisys D. Corp.",
+    context: "Custom web, mobile and enterprise software · Dominican Republic",
+    achievements: [
+      "Built a secure NestJS API for a national vaccination system managing records and appointments for 10M+ citizens.",
+      "Indexed citizen records with Elasticsearch, bringing search time from 10 seconds to under 500µs.",
+    ],
+  },
+];
+---
+
+<section class="section experience" id="experience" aria-labelledby="exp-title">
+  <div class="container exp-layout">
+    <header class="section-head exp-head">
+      <span class="eyebrow">Experience</span>
+      <h2 class="section-title" id="exp-title" data-reveal="clip">Six years, three teams, real users.</h2>
+      <p class="section-lead" data-reveal="up" style="--i:1">
+        Remote with product teams in the US and the Dominican Republic, across healthcare, government and small-business
+        software.
+      </p>
+      <a class="btn btn-secondary exp-cv" href={links.resume} target="_blank" rel="noopener" data-reveal="up" style="--i:2">
+        <Icon name="file" />
+        Full résumé (PDF)
+      </a>
+    </header>
+
+    <ol class="timeline" role="list">
+      {
+        roles.map((r, i) => (
+          <li class="role" data-reveal="up" style={`--i:${i}`}>
+            <div class="role-meta">
+              <span class:list={["period", { current: r.current }]}>{r.period}</span>
+            </div>
+            <div class="role-main">
+              <h3 class="role-title">
+                {r.role} <span class="at">at</span> {r.company}
+              </h3>
+              <p class="role-context">{r.context}</p>
+              <ul class="role-wins" role="list">
+                {r.achievements.map((a) => (
+                  <li>{a}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .exp-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-7) clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: start;
+  }
+
+  .exp-head {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-6));
+    margin-bottom: 0;
+  }
+
+  .exp-cv {
+    justify-self: start;
+    margin-top: var(--space-3);
+  }
+
+  .timeline {
+    position: relative;
+    display: grid;
+    padding-left: var(--space-6);
+  }
+
+  /* Rail + scroll-linked progress (transform only) */
+  .timeline::before,
+  .timeline::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--border-strong);
+  }
+
+  .timeline::after {
+    background: linear-gradient(to bottom, var(--accent), color-mix(in oklch, var(--accent) 20%, transparent));
+    transform-origin: top;
+    transform: scaleY(1);
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .timeline::after {
+        animation: rail linear both;
+        animation-timeline: view();
+        animation-range: entry 20% cover 70%;
+      }
+
+      @keyframes rail {
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
+        }
+      }
+    }
+  }
+
+  .role {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    padding-bottom: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+
+  .role:last-child {
+    padding-bottom: 0;
+  }
+
+  .role::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--space-6) * -1 - 4px);
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--text-3);
+    z-index: 1;
+  }
+
+  .role:has(.current)::before {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .period {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--text-3);
+  }
+
+  .period.current {
+    color: var(--accent-ink);
+  }
+
+  .role-title {
+    font-size: var(--step-2);
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+  }
+
+  .at {
+    font-family: var(--font-display-serif);
+    font-style: italic;
+    color: var(--text-3);
+  }
+
+  .role-context {
+    margin-top: var(--space-1);
+    color: var(--text-3);
+    font-size: 0.9375rem;
+  }
+
+  .role-wins {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    color: var(--text-2);
+    max-width: 38rem;
+  }
+
+  .role-wins li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .role-wins li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 8px;
+    height: 1px;
+    background: var(--text-3);
+  }
+
+  @media (max-width: 899px) {
+    .exp-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-head {
+      position: static;
+    }
+  }
+
+  @media (max-width: 559px) {
+    .timeline {
+      padding-left: var(--space-5);
+    }
+
+    .role::before {
+      left: calc(var(--space-5) * -1 - 4px);
+    }
+  }
+</style>

@@ -1,0 +1,244 @@
+---
+const rows = [
+  { ticket: "A-013", status: "Checked in", tone: "ok", eta: "~4 min" },
+  { ticket: "A-014", status: "Checked in", tone: "ok", eta: "~11 min" },
+  { ticket: "W-002", status: "Walk-in", tone: "info", eta: "~17 min" },
+  { ticket: "A-015", status: "On the way", tone: "accent", eta: "~24 min" },
+  { ticket: "A-016", status: "Scheduled", tone: "", eta: "10:40" },
+  { ticket: "A-017", status: "Scheduled", tone: "", eta: "10:55" },
+];
+---
+
+<div class="mock" aria-hidden="true">
+  <div class="head">
+    <div>
+      <p class="title">Cardiology · Queue</p>
+      <p class="sub">Dr. A. Pérez · 08:00 – 13:00</p>
+    </div>
+    <span class="pill pill-ok">On schedule</span>
+  </div>
+
+  <div class="now">
+    <span class="label">Now serving</span>
+    <span class="ticket">
+      <span class="ticket-roll">
+        <span>A-012</span>
+        <span>A-013</span>
+      </span>
+    </span>
+    <span class="room">Room 3</span>
+  </div>
+
+  <div class="list-wrap">
+    <ol class="list">
+      {
+        rows.map((r) => (
+          <li>
+            <span class="t">{r.ticket}</span>
+            <span class={`pill ${r.tone ? `pill-${r.tone}` : ""}`}>{r.status}</span>
+            <span class="eta">{r.eta}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <div class="toast">
+    <span class="toast-icon">A-014</span>
+    <span class="toast-text">
+      <strong>You're next after A-013</strong>
+      <span>Estimated wait updated · ~11 min</span>
+    </span>
+  </div>
+</div>
+
+<style>
+  .mock {
+    --row: 40px;
+    position: relative;
+    width: min(100%, 460px);
+    margin-inline: auto;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-2);
+    font-size: 12px;
+    container-type: inline-size;
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: -0.01em;
+  }
+
+  .sub {
+    color: var(--text-3);
+    font-size: 11.5px;
+  }
+
+  .now {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to right, var(--accent-soft), transparent 70%);
+  }
+
+  .label {
+    grid-column: 1 / -1;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+  }
+
+  .ticket {
+    display: block;
+    height: 1.1em;
+    overflow: hidden;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ticket-roll {
+    display: grid;
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+
+  .room {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--accent-ink);
+    padding-bottom: 4px;
+  }
+
+  .list-wrap {
+    height: calc(var(--row) * 4);
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, #000 70%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
+
+  .list {
+    list-style: none;
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+
+  .list li {
+    display: grid;
+    grid-template-columns: 4.5em 1fr auto;
+    align-items: center;
+    height: var(--row);
+    padding-inline: 16px;
+    border-bottom: 1px solid var(--border);
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .t {
+    font-family: var(--font-mono);
+    color: var(--text);
+  }
+
+  .list .pill {
+    justify-self: start;
+  }
+
+  .eta {
+    font-family: var(--font-mono);
+    color: var(--text-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .toast {
+    position: absolute;
+    right: -18px;
+    bottom: -22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: color-mix(in oklch, var(--bg-elevated) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-2);
+    transition: transform var(--dur-3) var(--ease-spring);
+  }
+
+  .toast-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+  }
+
+  .toast-text {
+    display: grid;
+    line-height: 1.35;
+  }
+
+  .toast-text strong {
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .toast-text span {
+    color: var(--text-3);
+    font-size: 11px;
+  }
+
+  /* The queue advances when the card is hovered */
+  :global([data-spotlight]:hover) .ticket-roll,
+  :global([data-spotlight]:focus-within) .ticket-roll {
+    transform: translateY(-50%);
+  }
+
+  :global([data-spotlight]:hover) .list,
+  :global([data-spotlight]:focus-within) .list {
+    transform: translateY(calc(var(--row) * -1));
+  }
+
+  :global([data-spotlight]:hover) .list li:first-child,
+  :global([data-spotlight]:focus-within) .list li:first-child {
+    opacity: 0;
+  }
+
+  :global([data-spotlight]:hover) .toast {
+    transform: translateY(-6px);
+  }
+
+  @container (max-width: 380px) {
+    .head .pill {
+      display: none;
+    }
+  }
+
+  @media (max-width: 559px) {
+    .toast {
+      right: -6px;
+      bottom: -26px;
+    }
+  }
+</style>

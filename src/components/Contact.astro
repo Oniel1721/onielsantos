@@ -1,0 +1,296 @@
+---
+import Icon from "./Icon.astro";
+import { links } from "../data/site";
+
+const channels = [
+  { label: "LinkedIn", handle: "in/onielsantos", href: links.linkedin, icon: "linkedin" as const },
+  { label: "GitHub", handle: "@Oniel1721", href: links.github, icon: "github" as const },
+  { label: "Résumé", handle: "PDF · 2 pages", href: links.resume, icon: "file" as const },
+];
+---
+
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-bg" aria-hidden="true"></div>
+  <div class="container contact-inner">
+    <span class="eyebrow">Contact</span>
+    <h2 class="contact-title" id="contact-title" data-reveal="clip">
+      Let's build something <span class="serif">useful.</span>
+    </h2>
+    <p class="contact-lead" data-reveal="up" style="--i:1">
+      Open to senior full-stack and frontend-focused roles, remote. Email is the fastest way to reach me.
+    </p>
+
+    <div class="email" data-reveal="up" style="--i:2">
+      <a class="email-link" href={`mailto:${links.email}`}>
+        <Icon name="mail" size={18} />
+        <span>{links.email}</span>
+      </a>
+      <button class="copy" type="button" data-copy={links.email} aria-label="Copy email address">
+        <span class="copy-icons" aria-hidden="true">
+          <Icon name="copy" class="i-copy" />
+          <Icon name="check" class="i-check" />
+        </span>
+        <span data-copy-label aria-live="polite">Copy</span>
+      </button>
+    </div>
+
+    <ul class="channels" role="list">
+      {
+        channels.map((c, i) => (
+          <li data-reveal="up" style={`--i:${i + 3}`}>
+            <a href={c.href} target="_blank" rel="noopener">
+              <Icon name={c.icon} size={18} />
+              <span class="ch-text">
+                <span class="ch-label">{c.label}</span>
+                <span class="ch-handle">{c.handle}</span>
+              </span>
+              <Icon name="arrow-up-right" class="ch-arrow" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="availability" data-reveal="fade" style="--i:6">
+      <span class="dot" aria-hidden="true"></span>
+      Dominican Republic · UTC−4 · Working remotely with US teams since 2023
+    </p>
+  </div>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 50% 45% at 50% 100%, var(--glow), transparent 70%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 64px 64px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 100%, #000 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 100%, #000 20%, transparent 70%);
+  }
+
+  .contact-inner {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-5);
+  }
+
+  .contact-title {
+    font-size: var(--step-4);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    max-width: 12em;
+  }
+
+  .contact-title .serif {
+    color: var(--accent-ink);
+  }
+
+  .contact-lead {
+    max-width: 34rem;
+    color: var(--text-2);
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+
+  /* Email pill with inline copy action */
+  .email {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: var(--space-4);
+    padding: 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-2);
+    max-width: 100%;
+  }
+
+  .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: 10px 16px 10px 14px;
+    border-radius: 999px;
+    font-size: var(--step-1);
+    letter-spacing: -0.015em;
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+
+  .email-link span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email-link :global(svg) {
+    flex: none;
+    color: var(--text-3);
+  }
+
+  .email-link:hover {
+    background: var(--surface-2);
+  }
+
+  .copy {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 44px;
+    padding-inline: 16px;
+    border-radius: 999px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    flex: none;
+    transition:
+      transform var(--dur-1) var(--ease-out),
+      background-color var(--dur-2) var(--ease-out);
+  }
+
+  .copy:active {
+    transform: scale(0.96);
+  }
+
+  .copy[data-copied] {
+    background: var(--ok);
+  }
+
+  .copy-icons {
+    display: grid;
+  }
+
+  .copy-icons :global(svg) {
+    grid-area: 1 / 1;
+    transition:
+      transform var(--dur-2) var(--ease-spring),
+      opacity var(--dur-1) var(--ease-out);
+  }
+
+  .copy-icons :global(.i-check),
+  .copy[data-copied] .copy-icons :global(.i-copy) {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  .copy[data-copied] .copy-icons :global(.i-check) {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Channels */
+  .channels {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 13.5rem));
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .channels a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-align: left;
+    background: color-mix(in oklch, var(--bg-elevated) 70%, transparent);
+    transition:
+      border-color var(--dur-2) var(--ease-out),
+      background-color var(--dur-2) var(--ease-out),
+      transform var(--dur-2) var(--ease-out);
+  }
+
+  .channels a > :global(svg:first-child) {
+    color: var(--text-2);
+    flex: none;
+  }
+
+  .ch-text {
+    display: grid;
+    line-height: 1.35;
+    min-width: 0;
+  }
+
+  .ch-label {
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+  .ch-handle {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--text-3);
+  }
+
+  .channels :global(.ch-arrow) {
+    margin-left: auto;
+    color: var(--text-3);
+    transition:
+      transform var(--dur-2) var(--ease-out),
+      color var(--dur-2) var(--ease-out);
+  }
+
+  .channels a:hover {
+    border-color: var(--border-strong);
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+
+  .channels a:hover :global(.ch-arrow) {
+    color: var(--accent-ink);
+    transform: translate(2px, -2px);
+  }
+
+  .availability {
+    margin-top: var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--text-3);
+  }
+
+  .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: var(--space-2);
+    vertical-align: 1px;
+    border-radius: 50%;
+    background: var(--ok);
+  }
+
+  @media (max-width: 719px) {
+    .channels {
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 24rem;
+    }
+
+    .email {
+      width: 100%;
+      max-width: 24rem;
+    }
+
+    .email-link {
+      flex: 1;
+      font-size: 0.9375rem;
+      padding-inline: 12px 8px;
+    }
+
+    .availability {
+      max-width: 22rem;
+    }
+  }
+</style>

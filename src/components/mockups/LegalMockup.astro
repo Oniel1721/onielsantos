@@ -1,0 +1,234 @@
+<div class="mock" aria-hidden="true">
+  <div class="search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+    </svg>
+    <span class="query">responsabilidad civil daño<span class="caret"></span></span>
+    <kbd>⌘K</kbd>
+  </div>
+
+  <div class="results">
+    <article class="result is-active">
+      <header>
+        <span class="doc">Código Civil</span>
+        <span class="art">Art. 1382</span>
+        <span class="pill">Vigente</span>
+      </header>
+      <p>
+        Cualquier hecho del hombre que causa a otro un <mark>daño</mark>, obliga a aquel por cuya culpa sucedió, a
+        repararlo.
+      </p>
+      <footer>
+        <span class="rel">↳ Art. 1383</span>
+        <span class="rel">↳ Art. 1384</span>
+        <span class="rel rel-accent">Jurisprudencia relacionada</span>
+      </footer>
+    </article>
+
+    <article class="result">
+      <header>
+        <span class="doc">Constitución</span>
+        <span class="art">Art. 69</span>
+        <span class="versions">
+          <span>2010</span>
+          <span>2015</span>
+          <span class="on">2024</span>
+        </span>
+      </header>
+      <p>Tutela judicial efectiva y debido proceso…</p>
+    </article>
+  </div>
+</div>
+
+<style>
+  .mock {
+    width: min(100%, 440px);
+    margin-inline: auto;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-2);
+    font-size: 12px;
+    overflow: hidden;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-3);
+  }
+
+  .query {
+    flex: 1;
+    color: var(--text);
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .caret {
+    display: inline-block;
+    width: 1.5px;
+    height: 1.05em;
+    margin-left: 2px;
+    vertical-align: -2px;
+    background: var(--accent);
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  kbd {
+    padding: 1px 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+  }
+
+  .results {
+    display: grid;
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .result {
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition:
+      background-color var(--dur-2) var(--ease-out),
+      border-color var(--dur-2) var(--ease-out);
+  }
+
+  .result.is-active {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .result header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .doc {
+    font-weight: 500;
+    font-size: 12.5px;
+  }
+
+  .art {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ink);
+  }
+
+  .result header .pill,
+  .versions {
+    margin-left: auto;
+  }
+
+  .result p {
+    color: var(--text-2);
+    line-height: 1.55;
+    font-size: 12.5px;
+  }
+
+  mark {
+    color: var(--text);
+    background: linear-gradient(var(--accent-soft), var(--accent-soft)) 0 100% / 100% 100% no-repeat;
+    border-bottom: 1px solid var(--accent);
+    transition: background-size var(--dur-3) var(--ease-out);
+  }
+
+  .result footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .rel {
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-2);
+  }
+
+  .rel-accent {
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+  }
+
+  .versions {
+    position: relative;
+    display: inline-flex;
+    padding: 2px;
+    border-radius: 6px;
+    background: var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+  }
+
+  .versions span {
+    position: relative;
+    z-index: 1;
+    padding: 1px 6px;
+    color: var(--text-3);
+    transition: color var(--dur-2) var(--ease-out);
+  }
+
+  .versions span.on {
+    color: var(--text);
+  }
+
+  .versions::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    width: calc((100% - 4px) / 3);
+    border-radius: 4px;
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-1);
+    transition: transform var(--dur-3) var(--ease-spring);
+  }
+
+  /* Hover: focus shifts to the versioned article */
+  :global([data-spotlight]:hover) .result.is-active,
+  :global([data-spotlight]:focus-within) .result.is-active {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  :global([data-spotlight]:hover) .result:not(.is-active),
+  :global([data-spotlight]:focus-within) .result:not(.is-active) {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  :global([data-spotlight]:hover) .versions::before,
+  :global([data-spotlight]:focus-within) .versions::before {
+    transform: translateX(-100%);
+  }
+
+  :global([data-spotlight]:hover) .versions span.on {
+    color: var(--text-3);
+  }
+
+  :global([data-spotlight]:hover) .versions span:nth-child(2) {
+    color: var(--text);
+  }
+</style>
