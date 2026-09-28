@@ -39,3 +39,4 @@ src/
 - Dark and light themes follow the system preference; a manual choice is saved in `localStorage`.
 - Every animation uses only `transform`/`opacity` and respects `prefers-reduced-motion`. Looping illustrations pause while off-screen.
 - `public/og.png` is the social preview image (1200×630).
+
